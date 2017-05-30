@@ -43,16 +43,21 @@ service
 
     var searchField2 = new NetSuite.Search.Fields.SearchDoubleField();
     searchField2.field = 'amount';
-    searchField2.operator = 'equalTo';
-    searchField2.searchValue = '396';
-
-    console.log(searchField2);
+    searchField2.operator = 'between';
+    searchField2.searchValue = '395';
+    searchField2.searchValue2 = '1000';
 
     transactionSearchBasic.searchFields.push(searchField2);
 
+    var searchField3 = new NetSuite.Search.Fields.SearchDateField();
+    searchField3.field = 'lastModifiedDate';
+    searchField3.operator = 'after';
+    searchField3.searchValue = '2013-09-25T00:00:00';
+
+    transactionSearchBasic.searchFields.push(searchField3);
+
     transactionSearch.basic = transactionSearchBasic
     search.criteria = transactionSearch
-
 
     console.log('Performing SearchAdvanced to retrieve data');
     return service.search(search);
@@ -72,18 +77,3 @@ service
     console.error('Last Request:');
     console.error(service.config.client.lastRequest);
   });
-
-
-// TransactionSearchAdvanced tsa4 = new TransactionSearchAdvanced();
-// tsa4.savedSearchId="57";
-
-// TransactionSearch ts = new TransactionSearch();
-// TransactionSearchBasic tsb = new TransactionSearchBasic();
-
-// // condition 1: on SO only
-// semsfTranType.searchValue = tranTypes;
-// tsb.type = semsfTranType;
-
-// ts.basic = tsb;
-// tsa4.criteria = ts;
-// nss.search(tsa4);
