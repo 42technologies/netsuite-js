@@ -24,14 +24,29 @@ service
 
     var preferences = new NetSuite.Search.SearchPreferences();
     preferences.pageSize = 10;
+    preferences.bodyFieldsOnly = false;
     service.setSearchPreferences(preferences);
 
-    var search = new NetSuite.Search.EmployeeSearchBasic();
+    // var search = new NetSuite.Search.EmployeeSearchBasic();
 
-    var searchField = new NetSuite.Search.Fields.SearchStringField();
-    searchField.field = 'firstName';
-    searchField.operator = 'contains';
-    searchField.searchValue = 'e';
+    // var searchField = new NetSuite.Search.Fields.SearchStringField();
+    // searchField.field = 'firstName';
+    // searchField.operator = 'contains';
+    // searchField.searchValue = 'e';
+
+    // search.searchFields.push(searchField);
+
+    var search = new NetSuite.Search.CustomListSearchBasic();
+
+    // var searchField = new NetSuite.Search.Fields.SearchStringField();
+    // searchField.field = 'name';
+    // searchField.operator = 'is';
+    // searchField.searchValue = 'Brand';
+
+    var searchField = new NetSuite.Search.Fields.SearchLongField();
+    searchField.field = 'internalIdNumber';
+    searchField.operator = 'equalTo';
+    searchField.searchValue = 77;
 
     search.searchFields.push(searchField);
 
@@ -43,7 +58,7 @@ service
 
     // search.searchFields.push(searchField2);
 
-    console.log('Searching for Employees with first name containing "e"');
+    console.log('Searching for CustomList');
     return service.search(search);
   })
   .then(function(result, raw, soapHeader) {
