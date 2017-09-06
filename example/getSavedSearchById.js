@@ -27,9 +27,14 @@ service
     service.setSearchPreferences(preferences);
 
     // var search = new NetSuite.Search.TransactionSearchAdvanced();
-    // search.savedSearchId = '2458';
-    var search = new NetSuite.Search.AccountSearchAdvanced();
-    search.savedSearchId = '2461';
+    // search.savedSearchId = '2270';
+    // var search = new NetSuite.Search.ItemSearchAdvanced();
+    // search.savedSearchId = '2651';
+    var search = new NetSuite.Search.CustomerSearchAdvanced();
+    search.savedSearchId = '2269';
+
+    var customerSearch = new NetSuite.Search.CustomerSearch();
+    var customerSearchBasic = new NetSuite.Search.CustomerSearchBasic();
 
     // var transactionSearch = new NetSuite.Search.TransactionSearch();
     // var transactionSearchBasic = new NetSuite.Search.TransactionSearchBasic();
@@ -49,14 +54,17 @@ service
 
     // transactionSearchBasic.searchFields.push(searchField2);
 
-    // var searchField3 = new NetSuite.Search.Fields.SearchDateField();
-    // searchField3.field = 'lastModifiedDate';
-    // searchField3.operator = 'within';
-    // searchField3.searchValue = '2013-09-25T00:00:00';
-    // searchField3.searchValue2 = '2018-09-25T00:00:00';
+    var searchField3 = new NetSuite.Search.Fields.SearchDateField();
+    searchField3.field = 'lastModifiedDate';
+    searchField3.operator = 'within';
+    searchField3.searchValue = '2017-08-25T00:00:00';
+    searchField3.searchValue2 = '2017-08-26T00:00:00';
+
+    customerSearchBasic.searchFields.push(searchField3);
+    customerSearch.basic = customerSearchBasic
+    search.criteria = customerSearch
 
     // transactionSearchBasic.searchFields.push(searchField3);
-
     // transactionSearch.basic = transactionSearchBasic
     // search.criteria = transactionSearch
 
