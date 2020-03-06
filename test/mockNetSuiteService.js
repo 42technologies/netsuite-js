@@ -3,7 +3,6 @@
 var fs = require('fs'),
   _ = require('lodash'),
   async = require('async'),
-  denodeify = require('denodeify'),
   nock = require('nock');
 
 /**

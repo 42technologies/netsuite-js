@@ -42,15 +42,6 @@ gulp.task('istanbul', function(cb) {
     });
 });
 
-gulp.task('docs', function() {
-  gulp.src(paths.source)
-    .pipe(plugins.doxx({
-      title: 'netsuite-js',
-      urlPrefix: '/netsuite-js/docs'
-    }))
-    .pipe(gulp.dest('./docs'));
-});
-
 gulp.task('bump', ['test', 'docs'], function() {
   var bumpType = plugins.util.env.type || 'patch'; // major.minor.patch
 
