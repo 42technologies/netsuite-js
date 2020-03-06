@@ -40,6 +40,8 @@ describe('NetSuite.Configuration', function() {
       .mockWsdl(mockWsdlUrl)
       .then(function() {
         done();
+      }).catch(function(error) {
+        done(error);
       });
   });
 

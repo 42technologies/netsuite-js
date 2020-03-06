@@ -17,34 +17,25 @@
   },
   "keywords": [],
   "dependencies": {
-    "debug": "2.1.1",
+    "debug": "4.1.1",
     "denodeify": "1.2.1",
     "lodash": "^4.17.15",
+    "nyc": "^15.0.0",
     "soap": "^0.31.0"
   },
   "devDependencies": {
-    "async": "^0.9.0",
-    "coveralls": "^2.11.2",
-    "gulp": "^3.8.11",
-    "gulp-bump": "^0.2.1",
-    "gulp-istanbul": "^0.6.0",
-    "gulp-jscs": "^1.4.0",
-    "gulp-jshint": "^1.9.2",
-    "gulp-load-plugins": "^0.8.0",
-    "gulp-mocha": "^2.0.0",
-    "gulp-plumber": "^0.6.6",
-    "gulp-util": "^3.0.4",
-    "jshint-stylish": "^1.0.1",
-    "mocha": "^2.1.0",
-    "nock": "^0.59.1",
-    "should": "^5.0.1"
+    "async": "^3.2.0",
+    "coveralls": "^3.0.9",
+    "mocha": "^7.1.0",
+    "nock": "^12.0.2",
+    "should": "^13.2.3"
   },
   "scripts": {
-    "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "test": "gulp test"
+    "coveralls": "npx nyc && cat coverage/lcov.info | npx coveralls.js",
+    "test": "npx nyc mocha --recursive"
   },
   "engines": {
-    "node": ">=4.3.0",
+    "node": ">=12.3.0",
     "npm": ">=3"
   }
 }
