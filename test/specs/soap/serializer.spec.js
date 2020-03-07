@@ -65,6 +65,7 @@ describe('NetSuite.SOAP.Serializer', function() {
     search.searchFields.push(searchField);
 
     var soapObj = NetSuite.SOAP.Serializer.serialize(search);
+    console.log(soapObj);
     soapObj.should.have.property('searchRecord');
     soapObj.searchRecord.should.have.property('$xml');
     soapObj.searchRecord.$xml.length.should.be.greaterThan(1);
